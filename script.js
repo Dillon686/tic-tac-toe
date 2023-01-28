@@ -1,6 +1,6 @@
 //Initialize gameboard
 const gameBoard = (function(){
-  const cells = ["X","X","X","O","O","O","X","X","X"];
+  const cells = [];
 
   function populateGameboard (cells){
     //Map cells to DOM variables
@@ -24,6 +24,7 @@ const gameBoard = (function(){
     cell7.textContent = gameBoard.cells[6];
     cell8.textContent = gameBoard.cells[7];
     cell9.textContent = gameBoard.cells[8];
+
   }
 
   return {cells, populateGameboard};
@@ -49,18 +50,31 @@ const Player = function(name, assignedLetter){
     return assignedLetter;
   }
 
-  function swapAssignedLetter(){
-    if (assignedLetter == "X"){
-      this.assignedLetter = "O";
-    }else if (assignedLetter == "O"){
-      this.assignedLetter = "X";
-    }
-  }
-
-  return {getName, setName, getAssignedLetter, setAssignedLetter, swapAssignedLetter};
+  return {getName, setName, getAssignedLetter, setAssignedLetter};
 }
 
 //Main module to control gameplay
 const displayController = (function(){
+  let player1 = Player("Dillon", "X");
+  let player2 = Player("Lauren", "Y");
+  const allCells = document.querySelectorAll(".grid-cell");
+  let currentMarker = "X";
   gameBoard.populateGameboard();
+
+  allCells.forEach(cell => {
+    cell.addEventListener('click', function(){
+      if (cell.textContent == ''){
+        cell.textContent = currentMarker;
+      }
+
+      if (currentMarker == "X"){
+        currentMarker = "O";
+      }else{
+        currentMarker = "X";
+      }
+      
+    })
+  })
+
 })();
+
