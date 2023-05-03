@@ -1,11 +1,12 @@
 let player1 = Player("Dillon", "O");
 let player2 = Player("Lauren", "X");
 let currentPlayer = player1;
+let status = document.getElementById("status-footer");
+let cellButtons = document.querySelectorAll(".cell");
+let win = false;
 
 let gameBoard = (function(){
     let array = new Array(9);
-    array[0] = "X";
-    array[1] = "O"
 
     let cells = [document.getElementById("cell1"),
         document.getElementById("cell2"),
@@ -39,6 +40,64 @@ function updateGameBoard(array){
 };
 
 function placeMarker(markerArray, cellsArray){
+    cellButtons.forEach(e => {
+        e.addEventListener('click', function(){
+            e.textContent = currentPlayer.marker;
+        })
+    })
 }
 
-updateGameBoard(gameBoard.array);
+function checkForWin(markerArray){
+    if (markerArray[0] == "X" && markerArray[1] == "X" && markerArray[2] == "X"){
+        win = true;
+    } else if (markerArray[0] == "X" && markerArray[4] == "X" && markerArray[8] == "X"){
+        win = true;
+    } else if (markerArray[0] == "X" && markerArray[3] == "X" && markerArray[6] == "X"){
+        win = true;
+    } else if (markerArray[1] == "X" && markerArray[4] == "X" && markerArray[7] == "X"){
+        win = true;
+    } else if (markerArray[2] == "X" && markerArray[4] == "X" && markerArray[6] == "X"){
+        win = true;
+    } else if (markerArray[2] == "X" && markerArray[5] == "X" && markerArray[8] == "X"){
+        win = true;
+    } else if (markerArray[3] == "X" && markerArray[4] == "X" && markerArray[5] == "X"){
+        win = true;
+    } else if (markerArray[6] == "X" && markerArray[7] == "X" && markerArray[8] == "X"){
+        win = true;
+    } else if (markerArray[0] == "O" && markerArray[1] == "O" && markerArray[2] == "O"){
+        win = true;
+    } else if (markerArray[0] == "O" && markerArray[4] == "O" && markerArray[8] == "O"){
+        win = true;
+    } else if (markerArray[0] == "O" && markerArray[3] == "O" && markerArray[6] == "O"){
+        win = true;
+    } else if (markerArray[1] == "O" && markerArray[4] == "O" && markerArray[7] == "O"){
+        win = true;
+    } else if (markerArray[2] == "O" && markerArray[4] == "O" && markerArray[6] == "O"){
+        win = true;
+    } else if (markerArray[2] == "O" && markerArray[5] == "O" && markerArray[8] == "O"){
+        win = true;
+    } else if (markerArray[3] == "O" && markerArray[4] == "O" && markerArray[5] == "O"){
+        win = true;
+    } else if (markerArray[6] == "O" && markerArray[7] == "O" && markerArray[8] == "O"){
+        win = true;
+    }
+}
+
+function gameLoop(){
+    while(win == false){
+        checkForWin(gameBoard.array);
+        status.textContent = `${currentPlayer.name}, it's your turn!`;
+        placeMarker(gameBoard.array, gameBoard.cells);
+        updateGameBoard(gameBoard.array);
+        if (currentPlayer == player1){
+            currentPlayer == player2;
+        }else if (currentPlayer == player2){
+            currentPlayer == player1;
+        }
+    }
+    status.textContent = ""
+    status.textContent = `${currentPlayer} won!`;
+}
+
+status.textContent = `${currentPlayer.name}, it's your turn!`;
+placeMarker(gameBoard.array, gameBoard.cells);

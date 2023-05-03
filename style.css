@@ -1,8 +1,9 @@
 *{
     margin: 0;
+    padding: 0;
 }
 body{
-    background-color: #2862b9;
+    background-color: #b08d27;
     display: flex;
     justify-content: center;
 }
@@ -17,7 +18,7 @@ body{
 
 #header{
     font-size: 5rem;
-    color: #B97F28;
+    color: #B04927;
     text-align: center;
 }
 
@@ -34,13 +35,16 @@ body{
     width: auto;
     font-size: 10rem;
     text-align: center;
-    color: #B97F28;
+    color: #B04927;
 }
 
 #button-container{
 
 }
 
-#footer{
-
+#status-footer{
+    color: black;
+    font-size: 2rem;
+    padding-top: 10px;
+    text-align: center;
 }
