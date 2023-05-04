@@ -6,6 +6,23 @@ let cellButtons = document.querySelectorAll(".cell");
 let win = false;
 let modalDisplay = document.querySelector("#modal");
 
+function arrayFull(array) {
+    let total = 0;
+    array.forEach(i => {
+        if (i == undefined){
+            total += 0
+        }else{
+            total += 1
+        }
+    })
+    
+    if (total < 9){
+        return false;
+    }else if (total == 9){
+        return true;
+    }
+}
+
 let gameBoard = (function(){
     let array = new Array();
 
@@ -63,6 +80,7 @@ function placeMarker(markerArray){
                 updateGameBoard(markerArray);
                 checkForWin(gameBoard.array);
                 swapPlayer(currentPlayer);
+                console.log(arrayFull(gameBoard.array))
             }
             
             
@@ -74,86 +92,69 @@ function checkForWin(markerArray){
     if (markerArray[0] == "X" && markerArray[1] == "X" && markerArray[2] == "X"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[0] == "X" && markerArray[4] == "X" && markerArray[8] == "X"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[0] == "X" && markerArray[3] == "X" && markerArray[6] == "X"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[1] == "X" && markerArray[4] == "X" && markerArray[7] == "X"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[2] == "X" && markerArray[4] == "X" && markerArray[6] == "X"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[2] == "X" && markerArray[5] == "X" && markerArray[8] == "X"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[3] == "X" && markerArray[4] == "X" && markerArray[5] == "X"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[6] == "X" && markerArray[7] == "X" && markerArray[8] == "X"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[0] == "O" && markerArray[1] == "O" && markerArray[2] == "O"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[0] == "O" && markerArray[4] == "O" && markerArray[8] == "O"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[0] == "O" && markerArray[3] == "O" && markerArray[6] == "O"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[1] == "O" && markerArray[4] == "O" && markerArray[7] == "O"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[2] == "O" && markerArray[4] == "O" && markerArray[6] == "O"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[2] == "O" && markerArray[5] == "O" && markerArray[8] == "O"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[3] == "O" && markerArray[4] == "O" && markerArray[5] == "O"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
     } else if (markerArray[6] == "O" && markerArray[7] == "O" && markerArray[8] == "O"){
         win = true;
         alert(`${currentPlayer.name} has won! \nClick OK to have a rematch!`);
-        markerArray.length = 0;
         location.reload();
-    } else if (markerArray.length == 9 && win == false){
+    } else if (arrayFull(gameBoard.array) == true && win == false){
         alert("It was a tie! \nClick OK to have a rematch!");
-        markerArray.length = 0;
         location.reload();
     }else{
         win = false;
