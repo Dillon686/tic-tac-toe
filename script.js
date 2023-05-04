@@ -1,6 +1,6 @@
-let player1 = Player("Dillon", "O");
-let player2 = Player("Lauren", "X");
-let currentPlayer = player1;
+let player1 = Player("Ash", "O");
+let player2 = Player("Misty", "X");
+const currentPlayer = player1;
 let status = document.getElementById("status-footer");
 let cellButtons = document.querySelectorAll(".cell");
 let win = false;
@@ -39,10 +39,14 @@ function updateGameBoard(array){
     gameBoard.cells[8].textContent = array[8];
 };
 
-function placeMarker(markerArray, cellsArray){
+function placeMarker(markerArray){
     cellButtons.forEach(e => {
         e.addEventListener('click', function(){
-            e.textContent = currentPlayer.marker;
+            markerArray[Number(e.dataset.number)] = currentPlayer.marker;
+            updateGameBoard(markerArray);
+            swapPlayer(currentPlayer);
+            console.log(markerArray)
+            console.log(currentPlayer)
         })
     })
 }
@@ -80,24 +84,24 @@ function checkForWin(markerArray){
         win = true;
     } else if (markerArray[6] == "O" && markerArray[7] == "O" && markerArray[8] == "O"){
         win = true;
+    }else {
+        win = false;
     }
 }
 
-function gameLoop(){
-    while(win == false){
-        checkForWin(gameBoard.array);
-        status.textContent = `${currentPlayer.name}, it's your turn!`;
-        placeMarker(gameBoard.array, gameBoard.cells);
-        updateGameBoard(gameBoard.array);
-        if (currentPlayer == player1){
-            currentPlayer == player2;
-        }else if (currentPlayer == player2){
-            currentPlayer == player1;
-        }
+function swapPlayer(){
+    if (currentPlayer == player1){
+        Object.assign(currentPlayer, player2);
+    }else if(currentPlayer == player2){
+        Object.assign(currentPlayer, player1);
     }
-    status.textContent = ""
-    status.textContent = `${currentPlayer} won!`;
 }
 
-status.textContent = `${currentPlayer.name}, it's your turn!`;
-placeMarker(gameBoard.array, gameBoard.cells);
+console.log(currentPlayer)
+swapPlayer()
+console.log(currentPlayer)
+swapPlayer()
+console.log(currentPlayer)
+//placeMarker(gameBoard.array);
+//checkForWin(gameBoard.array);
+
