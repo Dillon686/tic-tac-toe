@@ -1,6 +1,6 @@
 let player1 = Player("Ash", "O");
 let player2 = Player("Misty", "X");
-const currentPlayer = player1;
+let currentPlayer = player1;
 let status = document.getElementById("status-footer");
 let cellButtons = document.querySelectorAll(".cell");
 let win = false;
@@ -91,17 +91,13 @@ function checkForWin(markerArray){
 
 function swapPlayer(){
     if (currentPlayer == player1){
-        Object.assign(currentPlayer, player2);
+        currentPlayer = player2;
     }else if(currentPlayer == player2){
-        Object.assign(currentPlayer, player1);
+        currentPlayer = player1;
     }
 }
 
-console.log(currentPlayer)
-swapPlayer()
-console.log(currentPlayer)
-swapPlayer()
-console.log(currentPlayer)
-//placeMarker(gameBoard.array);
+
+placeMarker(gameBoard.array);
 //checkForWin(gameBoard.array);
 
