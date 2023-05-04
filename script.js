@@ -75,11 +75,11 @@ function placeMarker(markerArray){
             if (e.textContent != ""){
                 e.textContent = e.textContent;
             }else{
-                status.textContent = `It is ${currentPlayer.name}'s turn!`
                 markerArray[Number(e.dataset.number)] = currentPlayer.marker;
                 updateGameBoard(markerArray);
                 checkForWin(gameBoard.array);
                 swapPlayer(currentPlayer);
+                status.textContent = `It is ${currentPlayer.name}'s turn!`
             }
             
             
