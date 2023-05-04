@@ -15,7 +15,7 @@ function arrayFull(array) {
             total += 1
         }
     })
-    
+
     if (total < 9){
         return false;
     }else if (total == 9){
@@ -80,7 +80,6 @@ function placeMarker(markerArray){
                 updateGameBoard(markerArray);
                 checkForWin(gameBoard.array);
                 swapPlayer(currentPlayer);
-                console.log(arrayFull(gameBoard.array))
             }
             
             
