@@ -26,8 +26,8 @@ body{
 
 #board-container{
     display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
-    grid-template-rows: 33.3% 33.3% 33.3%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     gap: 5px;
 }
 
@@ -47,8 +47,9 @@ body{
 #status-footer{
     color: black;
     font-size: 3rem;
-    padding-top: 15px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #modal {
