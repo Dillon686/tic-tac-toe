@@ -10,7 +10,9 @@
 </head>
 <body>
     <div id="main-container">
-        <div id="header">Tic-Tac-Toe</div>
+        <div id="header">
+            <span>Tic-Tac-Toe</span>
+        </div>
         <div id="board-container">
             <div class="cell" id="cell1" data-number="0"></div>
             <div class="cell" id="cell2" data-number="1"></div>
@@ -23,6 +25,15 @@
             <div class="cell" id="cell9" data-number="8"></div>
         </div>
         <div id="status-footer"></div>
+        <div id="modal">
+            <h1>Enter player names, Player 1 goes first:</h1>
+            <br>
+            <form>
+                <label for="player-one">Player One (X): <input type="text" id="player-one" name="player-one"></label><br>
+                <label for="player-two">Player Two (O): <input type="text" id="player-two" name="player-two"></label><br>
+                <button id="submit-button">Submit</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
