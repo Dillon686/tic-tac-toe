@@ -1,9 +1,10 @@
-let player1 = Player("Ash", "O");
-let player2 = Player("Misty", "X");
+let player1 = Player(prompt("Who shall be Player 1?"), prompt("Would you like X or O?"));
+let player2 = Player(prompt("Who shall be Player 2?"), prompt("Would you like X or O?"));
 let currentPlayer = player1;
 let status = document.getElementById("status-footer");
 let cellButtons = document.querySelectorAll(".cell");
 let win = false;
+let winningMessage = `${currentPlayer.name} has won!`;
 
 let gameBoard = (function(){
     let array = new Array(9);
@@ -39,14 +40,31 @@ function updateGameBoard(array){
     gameBoard.cells[8].textContent = array[8];
 };
 
+function clearBoard(){
+    gameBoard.cells[0].textContent = "";
+    gameBoard.cells[1].textContent = "";
+    gameBoard.cells[2].textContent = "";
+    gameBoard.cells[3].textContent = "";
+    gameBoard.cells[4].textContent = "";
+    gameBoard.cells[5].textContent = "";
+    gameBoard.cells[6].textContent = "";
+    gameBoard.cells[7].textContent = "";
+    gameBoard.cells[8].textContent = "";
+}
+
 function placeMarker(markerArray){
     cellButtons.forEach(e => {
         e.addEventListener('click', function(){
-            markerArray[Number(e.dataset.number)] = currentPlayer.marker;
-            updateGameBoard(markerArray);
-            swapPlayer(currentPlayer);
-            console.log(markerArray)
-            console.log(currentPlayer)
+            if (e.textContent != ""){
+                e.textContent = e.textContent;
+            }else{
+                markerArray[Number(e.dataset.number)] = currentPlayer.marker;
+                updateGameBoard(markerArray);
+                checkForWin(gameBoard.array);
+                swapPlayer(currentPlayer);
+            }
+            
+            
         })
     })
 }
@@ -54,39 +72,104 @@ function placeMarker(markerArray){
 function checkForWin(markerArray){
     if (markerArray[0] == "X" && markerArray[1] == "X" && markerArray[2] == "X"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[0] == "X" && markerArray[4] == "X" && markerArray[8] == "X"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[0] == "X" && markerArray[3] == "X" && markerArray[6] == "X"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[1] == "X" && markerArray[4] == "X" && markerArray[7] == "X"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[2] == "X" && markerArray[4] == "X" && markerArray[6] == "X"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[2] == "X" && markerArray[5] == "X" && markerArray[8] == "X"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[3] == "X" && markerArray[4] == "X" && markerArray[5] == "X"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[6] == "X" && markerArray[7] == "X" && markerArray[8] == "X"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[0] == "O" && markerArray[1] == "O" && markerArray[2] == "O"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[0] == "O" && markerArray[4] == "O" && markerArray[8] == "O"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[0] == "O" && markerArray[3] == "O" && markerArray[6] == "O"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[1] == "O" && markerArray[4] == "O" && markerArray[7] == "O"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[2] == "O" && markerArray[4] == "O" && markerArray[6] == "O"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[2] == "O" && markerArray[5] == "O" && markerArray[8] == "O"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[3] == "O" && markerArray[4] == "O" && markerArray[5] == "O"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     } else if (markerArray[6] == "O" && markerArray[7] == "O" && markerArray[8] == "O"){
         win = true;
+        alert(winningMessage);
+        markerArray.length = 0;
+        clearBoard();
+        location.reload();
     }else {
         win = false;
     }
+    
 }
 
 function swapPlayer(){
@@ -99,5 +182,5 @@ function swapPlayer(){
 
 
 placeMarker(gameBoard.array);
-//checkForWin(gameBoard.array);
+
 
